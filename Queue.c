@@ -1,5 +1,5 @@
 //=======================================>QUEUE<============================
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 struct queue{
@@ -58,11 +58,11 @@ int main(){
     dequeue(&qe);
     return 0;
 }
-*/
+
 
 
 //                                                 CIRCULAR QUEUE
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 struct cqueue{
@@ -118,12 +118,12 @@ int main(){
     dequeue(&cqe);
     return 0;
 }
-*/
+
 
 //                                               DOUBLE-ENDED QUEUE(DEQUEUE)
 
 // ====================================================>NOT DONE YET<=============================================
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 struct DEqueue {
@@ -155,5 +155,5 @@ int main(){
     creating_DEqueue(&DEQ,10);
     return 0;
 }
-*/
+
 

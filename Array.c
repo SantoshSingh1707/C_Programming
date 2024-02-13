@@ -1,5 +1,5 @@
 // ============================================>ARRAY<======================================
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 struct myarr{
@@ -38,6 +38,6 @@ int main(){
     show(&marks);
     return 0;
 }
-*/
+
 
 // 

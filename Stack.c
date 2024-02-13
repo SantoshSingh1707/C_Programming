@@ -1,5 +1,5 @@
 // ===========================================>STACK<============================================
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 struct stack
@@ -50,12 +50,12 @@ int main(){
         printf("The stack is not full\n");
     return 0;
 }
-*/
+
 
 
 //                                      STACK OPERATION
 //                                    PUSH(),POP(),PEEK()
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 struct stack 
@@ -137,6 +137,6 @@ int main(){
     // pop(&s);
     return 0;
 }
-*/
+
 
 // 

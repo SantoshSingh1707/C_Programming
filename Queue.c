@@ -1,4 +1,4 @@
-//=======================================>QUEUE<============================
+// =====================================================>QUEUE<======================================================
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,22 +18,24 @@ int isfull(struct queue *q){
 int isempty(struct queue *q){
     if(q->rear==q->front)
     {
-        return -1;
+        return 1;
     }
     return 0;
 }
 void enqueue(struct queue *q,int val){
     if(isfull(q)){
-        printf("The queue is empty\n");
+        printf("The queue is Full\n");
     }
     else{
         q->rear++;
         q->arr[q->rear]=val;
+        printf("enqueing element %d \n",val);
+
     }
 }
 int dequeue(struct queue *q){
     if(isempty(q)){
-        printf("The queue is full\n");
+        printf("The queue is Empty\n");
         return -1;
     }
     else{
@@ -60,8 +62,7 @@ int main(){
 }
 
 
-
-//                                                 CIRCULAR QUEUE
+// ===================================================>CIRCULAR QUEUE<=======================================
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -123,7 +124,7 @@ int main(){
 //                                               DOUBLE-ENDED QUEUE(DEQUEUE)
 
 // ====================================================>NOT DONE YET<=============================================
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 struct DEqueue {
@@ -155,5 +156,117 @@ int main(){
     creating_DEqueue(&DEQ,10);
     return 0;
 }
+*/
 
 
+
+//TRYING
+
+#include <stdio.h>
+#include <stdlib.h>
+struct queue{
+    int front;
+    int rear;
+    int size;
+    int *arr;
+
+};
+void create_queue(struct queue *ptr,int size){
+    ptr->front=-1;
+    ptr->rear=-1;
+    ptr->size=size;
+    ptr->arr=(int*)malloc(ptr->size*sizeof(int));
+}
+int enqueue(struct queue *ptr,int data){
+    if(ptr->rear==ptr->size-1){
+        printf("Overflow\n");
+        return -1;
+    }
+    else{
+        ptr->rear++;
+        ptr->arr[ptr->rear]=data;
+        printf("Enquing Elemnet :%d\n",data);
+    }
+}
+int dequeue(struct queue *ptr){
+    if(ptr->front==ptr->rear){
+        printf("Underflow\n");
+    }
+    else{
+        ptr->front++;
+        printf("Dequeuing element %d \n",ptr->arr[ptr->front]);
+       return  0;
+       
+    }
+}
+int main(){
+    struct queue Queue;
+    create_queue(&Queue,3);
+    enqueue(&Queue,10);
+    enqueue(&Queue,20);
+    enqueue(&Queue,30);
+    dequeue(&Queue);
+    dequeue(&Queue);
+    dequeue(&Queue);
+    dequeue(&Queue);
+    return 0;
+}
+
+
+//Cricular queue
+
+#include <stdio.h>
+#include <stdlib.h>
+struct cqueue{
+    int size;
+    int front;
+    int rear;
+    int *arr;
+};
+
+void Create_Cqueue(struct cqueue *ptr,int size){
+    ptr->front=0;
+    ptr->rear=0;
+    ptr->size=size;
+    ptr->arr=(int*)malloc(ptr->size*sizeof(int));
+}
+
+int enqueue(struct cqueue *ptr,int data){
+    if((ptr->rear+1)%ptr->size==ptr->front){
+        printf("Queue Overflow .%d cannot be enqueued\n",data);
+    }
+    else{
+        printf("Enqueud element is %d \n",data);
+        ptr->arr[ptr->rear]=data;
+        ptr->rear=(ptr->rear+1)%ptr->size;
+    }
+}
+int dequeue(struct cqueue *ptr){
+    int val;
+    if(ptr->front==ptr->rear){
+        printf("The queue is Empty\n");
+    }
+    else{
+        ptr->front=(ptr->front+1)%(ptr->size);
+        val=ptr->arr[ptr->front];
+        printf("%d is removed \n",val);
+    }
+    return 0;
+}
+int main(){
+    struct cqueue cqu;
+    Create_Cqueue(&cqu,4);
+    enqueue(&cqu,10);
+    enqueue(&cqu,20);
+    enqueue(&cqu,30);
+    enqueue(&cqu,30);
+    // enqueue(&cqu,40);
+    dequeue(&cqu);
+    enqueue(&cqu,20);
+    dequeue(&cqu);
+    dequeue(&cqu);
+    enqueue(&cqu,20);
+    dequeue(&cqu);
+    dequeue(&cqu);
+    dequeue(&cqu);
+}
